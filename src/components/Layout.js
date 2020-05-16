@@ -1,8 +1,6 @@
 import React from "react"
-import fetch from "isomorphic-unfetch"
 
 import NavBar from "./NavBar"
-import Footer from "./Footer"
 
 const Layout = props => (
 	<div>
@@ -20,7 +18,6 @@ const Layout = props => (
 		<main className="main mx-auto overflow-auto">
 			{props.children}
 		</main>
-		<Footer />
 
 		<style jsx>{`
 			.main {

@@ -1,8 +1,5 @@
-import React, { useState, useEffect } from "react"
+import React from "react"
 import Link from "next/link"
-import fetch from "isomorphic-unfetch"
-
-import PhoneNumber from "./PhoneNumber"
 
 const NavBar = ({ info }) => {
 	return (
@@ -21,51 +18,14 @@ const NavBar = ({ info }) => {
 			<div className="collapse navbar-collapse" id="navbar-content">
 				<ul className="navbar-nav mr-auto">
 					<li className="nav-item">
-						<Link href="/">
-							<a className="link">Home</a>
-						</Link>
-					</li>
-
-					<li className="nav-item">
-						<Link href="/menu">
-							<a className="link">Menu</a>
-						</Link>
-					</li>
-
-					<li className="nav-item">
-						<Link href="/contact">
-							<a className="link">Contact</a>
-						</Link>
-					</li>
-
-					<li className="nav-item">
-						<Link href="/blog">
-							<a className="link">Blog</a>
-						</Link>
-					</li>
-
-					<li className="nav-item">
-						<Link href="/about">
-							<a className="link">About</a>
+						<Link href="#">
+							<a className="link">This is not the actual website. Click here to access the actual website</a>
 						</Link>
 					</li>
 				</ul>
-
-				<div className="phoneNumContainer text-white">
-					<i className="fas fa-phone"></i>
-					<PhoneNumber phoneNumber={info.phone} linkColor="white"/>
-				</div>
 			</div>
 
 			<style jsx>{`
-				.phoneNumContainer {
-					font-family: 'Oswald', sans-serif;
-					font-size: 20px;
-					margin-right: 20px;
-					//color: #ffec65;
-					max-width: 265px;
-				}
-
 				.link {
 					text-transform: uppercase;
 					font-family: 'Oswald', sans-serif;
