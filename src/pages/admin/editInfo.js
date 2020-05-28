@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import fetch from "isomorphic-unfetch"
-import { format, formatISO } from "date-fns"
+import { format, formatISO, addDays } from "date-fns"
 
 import Layout from "../../components/Layout"
 import ManagementHubButton from "../../components/admin/ManagementHubButton"
@@ -80,27 +80,27 @@ const EditInfo = ({ info, eventData: events }) => {
 		// Create updated representation of event 1 object to send as update
 		let updatedEvent1 = events[0]
 		updatedEvent1.name = event1Name
-		updatedEvent1.date = formatISO(new Date(event1Date))
+		updatedEvent1.date = formatISO(addDays(new Date(event1Date), 1))
 
 		// Create updated representation of event 2 object to send as update
 		let updatedEvent2 = events[1]
 		updatedEvent2.name = event2Name
-		updatedEvent2.date = formatISO(new Date(event2Date))
+		updatedEvent2.date = formatISO(addDays(new Date(event2Date), 1))
 
 		// Create updated representation of event 3 object to send as update
 		let updatedEvent3 = events[2]
 		updatedEvent3.name = event3Name
-		updatedEvent3.date = formatISO(new Date(event3Date))
+		updatedEvent3.date = formatISO(addDays(new Date(event3Date), 1))
 
 		// Create updated representation of event 4 object to send as update
 		let updatedEvent4 = events[3]
 		updatedEvent4.name = event4Name
-		updatedEvent4.date = formatISO(new Date(event4Date))
+		updatedEvent4.date = formatISO(addDays(new Date(event4Date), 1))
 
 		// Create updated representation of event 5 object to send as update
 		let updatedEvent5 = events[4]
 		updatedEvent5.name = event5Name
-		updatedEvent5.date = formatISO(new Date(event5Date))
+		updatedEvent5.date = formatISO(addDays(new Date(event5Date), 1))
 
 		// Update events in DB API
 		let updatedEvents = [ updatedEvent1, updatedEvent2, updatedEvent3, updatedEvent4, updatedEvent5 ]
