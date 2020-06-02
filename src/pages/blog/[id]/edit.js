@@ -34,7 +34,7 @@ const Post = ({ post, info }) => {
 
         // Grab valid part of string
         const formattedDateISO = unformattedDateISO.slice(0, unformattedDateISO.lastIndexOf("-"))
-        
+
         // updated values for updating the database
         let updatedPost = {
             _id: post._id,
@@ -67,12 +67,19 @@ const Post = ({ post, info }) => {
             Router.push("/admin/manageBlog")
         }
     }
-    
+
     function correctImageLink(link) {
+	/* Old Google Drive sharing link modification (changed in spring 2020) ->
         const findString = "https://drive.google.com/open?id="
         const replacementString = "https://drive.google.com/uc?id="
-    
-        return link.replace(findString, replacementString)
+	*/
+
+        const findString = "https://drive.google.com/file/d/"
+        const replacementString = "https://drive.google.com/uc?id="
+
+	const newlink = link.replace("/view?usp=sharing", "")
+
+        return newlink.replace(findString, replacementString)
     }
 
     return (
@@ -201,7 +208,7 @@ const Post = ({ post, info }) => {
                     margin-right: 15%;
                     margin-top: 3%;
                 }
-                
+
                 .btn-green:hover {
                     background-color: #3f855d;
                 }
