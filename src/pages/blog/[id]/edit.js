@@ -6,6 +6,7 @@ import { format, formatISO, addDays } from "date-fns"
 
 import Layout from "../../../components/Layout"
 import Modal from "../../../components/Modal"
+import ManagementHubButton from "../../../components/admin/ManagementHubButton"
 
 const Post = ({ post, info }) => {
     const [ postNum, setPostNum ] = useState(post.id)
@@ -34,7 +35,7 @@ const Post = ({ post, info }) => {
 
         // Grab valid part of string
         const formattedDateISO = unformattedDateISO.slice(0, unformattedDateISO.lastIndexOf("-"))
-        
+
         // updated values for updating the database
         let updatedPost = {
             _id: post._id,
@@ -67,12 +68,19 @@ const Post = ({ post, info }) => {
             Router.push("/admin/manageBlog")
         }
     }
-    
+
     function correctImageLink(link) {
+	/* Old Google Drive sharing link modification (changed in spring 2020) ->
         const findString = "https://drive.google.com/open?id="
         const replacementString = "https://drive.google.com/uc?id="
-    
-        return link.replace(findString, replacementString)
+	*/
+
+        const findString = "https://drive.google.com/file/d/"
+        const replacementString = "https://drive.google.com/uc?id="
+
+	const newlink = link.replace("/view?usp=sharing", "")
+
+        return newlink.replace(findString, replacementString)
     }
 
     return (
@@ -130,7 +138,16 @@ const Post = ({ post, info }) => {
                         </div>
                     </div>
 
-                    <button type="submit" className="btn btn-green">Save Edits</button>
+
+	            <div className="d-flex flex-row justify-content-between">
+                        <div className="d-inline p-2">
+                            <ManagementHubButton />
+                        </div>
+                        <div className="d-inline p-2">
+                            <button type="submit" className="btn btn-green">Save Edits</button>
+                        </div>
+                    </div>
+
                 </form>
             </Layout>
 
@@ -197,11 +214,11 @@ const Post = ({ post, info }) => {
                     background-color: #42a86e;
                     border: 1px solid #3f855d;
                     color: white;
-                    float: right;
-                    margin-right: 15%;
-                    margin-top: 3%;
+                    //float: right;
+                    //margin-right: 15%;
+                    //margin-top: 3%;
                 }
-                
+
                 .btn-green:hover {
                     background-color: #3f855d;
                 }

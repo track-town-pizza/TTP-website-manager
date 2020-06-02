@@ -80,10 +80,17 @@ const Post = ({ info }) => {
     }
 
     function correctImageLink(link) {
+	/* Old Google Drive sharing link modification (changed in spring 2020) ->
         const findString = "https://drive.google.com/open?id="
         const replacementString = "https://drive.google.com/uc?id="
+	*/
 
-        return link.replace(findString, replacementString)
+        const findString = "https://drive.google.com/file/d/"
+        const replacementString = "https://drive.google.com/uc?id="
+
+	const newlink = link.replace("/view?usp=sharing", "")
+
+        return newlink.replace(findString, replacementString)
     }
 
     return (
@@ -167,21 +174,21 @@ const Post = ({ info }) => {
                 display: inline-block;
                 float: left;
             }
-            
+
             .postElement {
                 display: block;
                 float: right;
                 font-size: 1em;
                 margin-left: 20px;
             }
-            
+
             h4 {
                 display: block;
                 float: right;
                 font-size: 1em;
                 //margin-left: 20px;
             }
-            
+
             img {
                 display: block;
                 margin-top: 15px;
@@ -191,7 +198,7 @@ const Post = ({ info }) => {
                 max-height: 600px;
                 max-width: 60px;
             }
-            
+
             .SinglePost {
                 background: #F8F8F8;
                 border: 1px solid #EDEDED;
@@ -200,12 +207,12 @@ const Post = ({ info }) => {
                 padding: 20px;
                 margin-bottom: 30px;
             }
-            
+
             #content {
                 white-space: pre-wrap;
                 margin-bottom: 30px;
             }
-            
+
             p {
                 white-space: pre-wrap;
             }
@@ -219,7 +226,7 @@ const Post = ({ info }) => {
             .btn-green:hover {
                 background-color: #3f855d;
             }
-            
+
             @media only screen and (max-width: 700px) {
                 .blog-container {
                     margin-left: 10%;
