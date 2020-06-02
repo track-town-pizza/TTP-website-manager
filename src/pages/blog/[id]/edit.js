@@ -6,6 +6,7 @@ import { format, formatISO, addDays } from "date-fns"
 
 import Layout from "../../../components/Layout"
 import Modal from "../../../components/Modal"
+import ManagementHubButton from "../../../components/admin/ManagementHubButton"
 
 const Post = ({ post, info }) => {
     const [ postNum, setPostNum ] = useState(post.id)
@@ -137,7 +138,16 @@ const Post = ({ post, info }) => {
                         </div>
                     </div>
 
-                    <button type="submit" className="btn btn-green">Save Edits</button>
+
+	            <div className="d-flex flex-row justify-content-between">
+                        <div className="d-inline p-2">
+                            <ManagementHubButton />
+                        </div>
+                        <div className="d-inline p-2">
+                            <button type="submit" className="btn btn-green">Save Edits</button>
+                        </div>
+                    </div>
+
                 </form>
             </Layout>
 
@@ -204,9 +214,9 @@ const Post = ({ post, info }) => {
                     background-color: #42a86e;
                     border: 1px solid #3f855d;
                     color: white;
-                    float: right;
-                    margin-right: 15%;
-                    margin-top: 3%;
+                    //float: right;
+                    //margin-right: 15%;
+                    //margin-top: 3%;
                 }
 
                 .btn-green:hover {
